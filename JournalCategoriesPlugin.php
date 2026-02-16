@@ -100,7 +100,7 @@ class JournalCategoriesPlugin extends GenericPlugin
             $templateMgr->assign('journalCategories', $this->getJournalCategories());
             
             // Use custom template
-            $template = $this->getTemplateResource('frontend/pages/indexSite.tpl');
+            $template = $this->getTemplateResource('indexSite.tpl');
         }
         
         return false;
@@ -113,7 +113,7 @@ class JournalCategoriesPlugin extends GenericPlugin
         $template = &$params[1];
         
         if ($template === 'frontend/pages/indexSite.tpl') {
-            $template = $this->getTemplateResource('frontend/pages/indexSite.tpl');
+            $template = $this->getTemplateResource('indexSite.tpl');
         }
         
         return false;

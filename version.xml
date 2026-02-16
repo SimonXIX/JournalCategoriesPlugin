@@ -2,11 +2,11 @@
 <!DOCTYPE version SYSTEM "../../../lib/pkp/dtd/pluginVersion.dtd">
 <version>
     <!-- The application value should match the directory name of the theme -->
-    <application>EdinburghDiamondTheme</application>
-    <type>plugins.themes</type>
+    <application>JournalCategories</application>
+    <type>plugins.generic</type>
     <release>1.0.0.0</release>
-    <date>2026-02-13</date>
+    <date>2026-02-16</date>
     <lazy-load>1</lazy-load>
     <sitewide>1</sitewide>
-    <class>EdinburghDiamondThemePlugin</class>
+    <class>JournalCategoriesPlugin</class>
 </version>

@@ -23,106 +23,64 @@
         <div class="journals">
                 <h2>
                         {translate key="context.contexts"}
-                </h2>            
+                </h2>
                 {if !$journals|@count}
                         {translate key="site.noJournals"}
                 {else}
-                        <ul>
-                                <div class="journal-category">
-                                        <h3 id="active_journals">
-                                                Active Journals
-                                        </h3>
-                                        <div id="see_more"> See also <a href="#archived_journals">Archived Journals</a></div>
-                                </div>
-                                {foreach from=$journals item=journal}
-                                    {if $journal->getId() == 1 || $journal->getId() == 2 || $journal->getId() == 4 || $journal->getId() == 11 || $journal->getId() == 6 || $journal->getId() == 17 || $journal->getId() == 16 || $journal->getId() == 5 || $journal->getId() == 9 || $journal->getId() == 13 || $journal->getId() == 15}
-                                        {capture assign="url"}{url journal=$journal->getPath()}{/capture}
-                                        {assign var="thumb" value=$journal->getLocalizedData('journalThumbnail')}
-                                        {assign var="description" value=$journal->getLocalizedDescription()}
-                                        <li{if $thumb} class="has_thumb"{/if}>
-                                                {if $thumb}
-                                                        <div class="thumb">
-                                                                <a href="{$url}">
-                                                                        <img src="{$journalFilesPath}{$journal->getId()}/{$thumb.uploadName|escape:"url"}"{if $thumb.altText} alt="{$thumb.altText|escape|default:''}"{/if}>
-                                                                </a>
+                        {* Display categorized journals *}
+                        {if $categorizedJournals}
+                                {foreach from=$categorizedJournals key=categoryName item=categoryData}
+                                        <ul>
+                                                {if $categoryData.journals|@count > 0}
+                                                        <div class="journal-category">
+                                                                <h3 class="category-title">{$categoryName|escape}</h3>
+                                                                <!--{if $categoryData.description}
+                                                                        <p class="category-description">{$categoryData.description|escape}</p>
+                                                                {/if}-->
                                                         </div>
-                                                {/if}
+                                                        {foreach from=$categoryData.journals item=journal}
+                                                                {capture assign="url"}{url journal=$journal->getPath()}{/capture}
+                                                                {assign var="thumb" value=$journal->getLocalizedData('journalThumbnail')}
+                                                                {assign var="description" value=$journal->getLocalizedDescription()}
+                                                                <li{if $thumb} class="has_thumb"{/if}>
+                                                                        {if $thumb}
+                                                                                <div class="thumb">
+                                                                                        <a href="{$url}">
+                                                                                                <img src="{$journalFilesPath}{$journal->getId()}/{$thumb.uploadName|escape:"url"}"{if $thumb.altText} alt="{$thumb.altText|escape|default:''}"{/if}>
+                                                                                        </a>
+                                                                                </div>
+                                                                        {/if}
 
-                                                <div class="body">
-                                                        <h3>
-                                                                <a href="{$url}" rel="bookmark">
-                                                                        {$journal->getLocalizedName()|escape}
-                                                                </a>
-                                                        </h3>
-                                                        {if $description}
-                                                                <div class="description">
-                                                                        {$description}
-                                                                </div>
-                                                        {/if}
-                                                        <ul class="links">
-                                                                <li class="view">
-                                                                        <a href="{$url}">
-                                                                                {translate key="site.journalView"}
-                                                                        </a>
+                                                                        <div class="body">
+                                                                                <h3>
+                                                                                        <a href="{$url}" rel="bookmark">
+                                                                                                {$journal->getLocalizedName()|escape}
+                                                                                        </a>
+                                                                                </h3>
+                                                                                {if $description}
+                                                                                        <div class="description">
+                                                                                                {$description}
+                                                                                        </div>
+                                                                                {/if}
+                                                                                <ul class="links">
+                                                                                        <li class="view">
+                                                                                                <a href="{$url}">
+                                                                                                        {translate key="site.journalView"}
+                                                                                                </a>
+                                                                                        </li>
+                                                                                        <li class="current">
+                                                                                                <a href="{url journal=$journal->getPath() page="issue" op="current"}">
+                                                                                                        {translate key="site.journalCurrent"}
+                                                                                                </a>
+                                                                                        </li>
+                                                                                </ul>
+                                                                        </div>
                                                                 </li>
-                                                                <li class="current">
-                                                                        <a href="{url journal=$journal->getPath() page="issue" op="current"}">
-                                                                                {translate key="site.journalCurrent"}
-                                                                        </a>
-                                                                </li>
-                                                        </ul>
-                                                </div>
-                                        </li>
-                                    {/if}
-                                {/foreach}
-                                <div class="journal-category">
-                                        <h3 id="archived_journals">
-                                                Archived Journals
-                                        </h3>
-                                        <div id="see_more"> See also <a href="#active_journals">Active Journals</a></div>
-                                </div>
-                                {foreach from=$journals item=journal}
-                                    {if $journal->getId() == 12 || $journal->getId() == 14 || $journal->getId() == 7 || $journal->getId() == 8 || $journal->getId() == 18 || $journal->getId() == 10}
-                                        {capture assign="url"}{url journal=$journal->getPath()}{/capture}
-                                        {assign var="thumb" value=$journal->getLocalizedData('journalThumbnail')}
-                                        {assign var="description" value=$journal->getLocalizedDescription()}
-                                        <li{if $thumb} class="has_thumb"{/if}>
-                                                {if $thumb}
-                                                        <div class="thumb">
-                                                                <a href="{$url}">
-                                                                        <img src="{$journalFilesPath}{$journal->getId()}/{$thumb.uploadName|escape:"url"}"{if $thumb.altText} alt="{$thumb.altText|escape|default:''}"{/if}>
-                                                                </a>
-                                                        </div>
+                                                        {/foreach}
                                                 {/if}
-
-                                                <div class="body">
-                                                        <h3>
-                                                                <a href="{$url}" rel="bookmark">
-                                                                        {$journal->getLocalizedName()|escape}
-                                                                </a>
-                                                        </h3>
-                                                        {if $description}
-                                                                <div class="description">
-                                                                        {$description}
-                                                                </div>
-                                                        {/if}
-                                                        <ul class="links">
-                                                                <li class="view">
-                                                                        <a href="{$url}">
-                                                                                {translate key="site.journalView"}
-                                                                        </a>
-                                                                </li>
-                                                                <li class="current">
-                                                                        <a href="{url journal=$journal->getPath() page="issue" op="current"}">
-                                                                                {translate key="site.journalCurrent"}
-                                                                        </a>
-                                                                </li>
-                                                        </ul>
-                                                </div>
-                                        </li>
-                                    {/if}
-                                {/foreach}
-                        </ul>
+                                        </ul>
+                                {/foreach} 
+                        {/if} 
                 {/if}
         </div>
 

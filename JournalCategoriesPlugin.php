@@ -53,13 +53,17 @@ class JournalCategoriesPlugin extends GenericPlugin
         // hardcoded in PHP
         $categories = [
             'Active Journals' => [
-                'journal_ids' => [1, 2, 4, 11, 6, 17, 16, 5, 9, 13, 15],
+                'journal_ids' => [19, 17, 25, 42, 30, 39, 38, 6, 29, 47, 48, 45, 23, 7, 22, 24, 27, 37, 43, 15, 41, 18, 46, 40, 16, 35, 2, 26],
                 'description' => 'Ongoing journals.'
             ],
             'Inactive Journals' => [
-                'journal_ids' => [12, 14, 7, 8, 18, 10],
+                'journal_ids' => [4, 5, 21, 13, 11, 3, 20, 1],
                 'description' => 'Inactive journals.'
-            ]
+            ],
+            'Conference Proceedings Journals' => [
+                'journal_ids' => [32, 34, 28, 33, 14, 36, 44],
+                'description' => 'Conference journals.'
+            ],
         ];
         
         return $categories;

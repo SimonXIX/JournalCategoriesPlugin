@@ -32,7 +32,7 @@
                                 {foreach from=$categorizedJournals key=categoryName item=categoryData}
                                         <ul>
                                                 {if $categoryData.journals|@count > 0}
-                                                        <div class="journal-category" id="{$categoryName|regex_replace:'/[^a-z0-9]+/':'_'|lower}">
+                                                        <div class="journal-category" id="{$categoryName|regex_replace:'/[^A-z0-9]+/':'_'|lower}">
                                                                 <h3 class="category-title">{$categoryName|escape}</h3>
                                                                 <!--{if $categoryData.description}
                                                                         <p class="category-description">{$categoryData.description|escape}</p>
@@ -44,7 +44,7 @@
                                                                         {foreach from=$categorizedJournals key=otherCategoryName item=otherCategoryData}
                                                                                 {if $otherCategoryName != $currentCategory && $otherCategoryData.journals|@count > 0}
                                                                                         {if $linkCount > 0}, {/if}
-                                                                                        <a href="#{$otherCategoryName|regex_replace:'/[^a-z0-9]+/':'_'|lower}">{$otherCategoryName|escape}</a>
+                                                                                        <a href="#{$otherCategoryName|regex_replace:'/[^A-z0-9]+/':'_'|lower}">{$otherCategoryName|escape}</a>
                                                                                         {assign var="linkCount" value=$linkCount+1}
                                                                                 {/if}
                                                                         {/foreach}

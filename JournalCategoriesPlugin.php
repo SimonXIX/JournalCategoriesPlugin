@@ -50,7 +50,6 @@ class JournalCategoriesPlugin extends GenericPlugin
      * You can modify these arrays to organize your journals
      */
     private function getJournalCategories() {
-        // hardcoded in PHP
         $categories = [
             'Active Journals' => [
                 'journal_ids' => [19, 17, 25, 42, 30, 39, 38, 6, 29, 47, 48, 45, 23, 7, 22, 24, 27, 37, 43, 15, 41, 18, 46, 40, 16, 35, 2, 26],

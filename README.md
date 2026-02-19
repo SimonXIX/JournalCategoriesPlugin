@@ -14,7 +14,7 @@ This plugin, designed and configured for Edinburgh Diamond, organises journals o
 
 ## Installation
 
-1. Copy the entire `JournalCategoriesPlugin` folder to your OJS installation:
+1. Copy the entire `JournalCategories` folder to your OJS installation:
    ```
    OJS-WEB-PATH/plugins/generic/JournalCategories/
    ```

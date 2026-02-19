@@ -1,6 +1,6 @@
 # Journal Categories Plugin for OJS 3.4
 
-This plugin, designed and configured for Edinburgh Diamond, organises journals on the OJS homepage into predefined categories based on journal IDs. 
+This plugin, designed for [Edinburgh Diamond](https://library.ed.ac.uk/research-support/edinburgh-diamond), organises journals on the OJS homepage into predefined categories based on journal IDs. 
 
 ## Features
 
@@ -43,7 +43,7 @@ OR
 
 ## Configuration
 
-Journal categories are configured through the OJS admin interface — no code editing required.
+Journal categories are configured through the OJS admin interface.
 
 1. Log in as an administrator
 
